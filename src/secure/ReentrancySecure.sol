@@ -2,7 +2,6 @@
 pragma solidity ^0.8.20;
 
 contract ReentrancySecure {
-
     mapping(address => uint256) public balances;
 
     // Deposit ETH into the vault
@@ -21,7 +20,7 @@ contract ReentrancySecure {
         balances[msg.sender] = 0;
 
         // Interaction: transfer ETH
-        (bool success, ) = msg.sender.call{value: amount}("");
+        (bool success,) = msg.sender.call{value: amount}("");
         require(success, "Transfer failed");
     }
 
